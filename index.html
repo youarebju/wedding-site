@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>謝政效 ❤ 王筱雯</title>
+  <title>謝政孝 ❤ 王筱雯</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <script src="https://unpkg.com/vue"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -36,17 +36,18 @@
       <section class="message">
         <div class="content">
           <p v-html="leaveMessage"></p>
-          <span>{{ who }}</span><input type="text"><br>
+          <span>{{ who }}</span><input type="text" v-model="guestName"><br>
           <span>{{ message }}</span>
-          <textarea rows="4" cols="50"></textarea><br>
-          <button>{{ submit }}</button>
+          <textarea rows="4" cols="50" v-model="guestMessage"></textarea><br>
+          <button  v-on:click="addMessage">{{ submit }}</button>
         </div>
         <div class="image"><img src="images/message.jpg"/></div>
       </section>
       <section class="messages">
         <h2>0則留言</h2>
         <ol class="message-list">
-          <li v-for="message in messages" v-html="message.html">
+          <li v-for="message in messages">
+              <img src=""/><br><span>{{message.name}}</span><p>{{message.text}}</p>
           </li>
         </ol>
       </section>
@@ -75,19 +76,28 @@
         meet:'我們 2015/12/30 在 tinder 聊天認識，<br>2016/01/02 見面，<br>然後覺得合適就結婚了。',
         leaveMessage: '在這個對我們來說非常重要的日子，謝謝您的參與，讓這個充滿意義的日子更為圓滿！<br><br>給一個留言',
         who: '你是誰：',
+        guestName: '你是誰',
+        guestMessage: '好棒棒',
         message: '留個言：',
         submit: '發　佈',
         messages: [
-          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
-          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
-          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
-          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
+          {img:'seat.svg', name:'a', text:'a'  },
+          {img:'seat.svg', name:'a', text:'a'  },
+          {img:'seat.svg', name:'a', text:'a'  },
+          {img:'seat.svg', name:'a', text:'a'  },
         ],
         footerTitle: 'Vegetarian Wedding',
         footerDescription: 'Invite you to celebrate our marriage.',
         seatURL: '',
         showMenu: false,
       },
+        // define methods under the `methods` object
+        methods: {
+            addMessage: function (event) {
+                // `this` inside methods points to the Vue instance
+                alert(this.guestName + ' 說 ' + this.guestMessage)
+            }
+        }
     })
 var settings = {
   "async": true,
