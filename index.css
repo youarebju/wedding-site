@@ -1,0 +1,343 @@
+﻿body {
+    margin: 0;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+  }
+  h1 {
+    font-size: 2.8vw;
+    margin: 36vh 0 0 60px;
+  }
+  .menu-button {
+    position: absolute;
+    margin: 16px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: 0;
+    padding: 0;
+    outline: 0;
+  }
+  .menu-button span {
+    width: 90%;
+    height: 2px;
+    background-color: #000;
+    display: inline-block;
+    position: relative;
+  }
+  .menu-button span::before,
+  .menu-button span::after {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 2px;
+    background-color: #000;
+    top: -10px;
+    left: 0;
+  }
+  .menu-button span::after {
+    top: 10px;
+  }
+  .menu-mask {
+    position: fixed;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 1;
+  }
+  .menu {
+    position: fixed;
+    left: -300px;
+    transition: .3s;
+    width: 300px;
+    background: #fff;
+    padding: 60px;
+    height: 100vh;
+    top: 0;
+    list-style: none;
+    z-index: 2;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .main {
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    font-size: 0;
+  }
+  .info {
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: 2px;
+    font-size: 16px;
+    position: relative;
+  }
+  .info p {
+    margin: 0 0 10px 60px;
+  }
+  .info p:first-of-type { 
+    margin-top: 50px;
+  }
+  .info p span {
+    font-size: 38px;
+    margin: 20px 16px 0 0;
+  }
+  .info .address {
+    position: absolute;
+    bottom: 60px;
+  }
+  .info address {
+    font-style: normal;
+    font-size: 10px;
+    display: inline-block;
+  }
+  .info .location {
+    display: inline-block;
+    width: 37px;
+    height: 37px;
+    background: url(images/location.svg) -4px;
+    margin-left: 60px;
+    vertical-align: middle;
+  }
+  .main-image {
+    display: inline-block;
+    background: url(images/main.jpg) no-repeat center;
+    background-size: cover;
+    width: 50%;
+    height: 100%;
+  }
+  .meet {
+    width: 100%;
+    margin-top: 80px;
+    padding-bottom: 150px;
+    font-size: 16px;
+  }
+  .meet div {
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: 2px;
+  }
+  .meet .image {
+    width: 50%;
+    margin-left: 30px;
+    box-shadow: 100px 70px #fafafa;
+  }
+  .meet .image img {
+    width: 100%;
+  }
+  .meet .content {
+    margin-top: 100px;
+    margin-left: 58px;
+    line-height: 2.6;
+  }
+  .message {
+    background-image: linear-gradient(to right, #fafafa 88%, #fff 4%);
+    width: 100%;
+    height: 520px;
+    text-align: right;
+  }
+  .message div {
+    display: inline-block;
+  }
+  .message .image {
+    width: 300px;
+    margin: 30px 140px 0 0;
+  }
+  .message .image img {
+    width: 100%;
+  }
+  .message .content {
+    width: 50%;
+    vertical-align: top;
+    text-align: left;
+    margin-top: 60px;
+    letter-spacing: 2px;
+    margin-right: 20px;
+  }
+  .message .content span {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .message input,
+  .message .content textarea {
+    padding: 8px 16px;
+    width: 468px;
+    border: 1px solid #ddd;
+    margin-bottom: 16px;
+  }
+  .message .content textarea {
+    height: 100px;
+  }
+  .message .content input:focus,
+  .message .content textarea:focus {
+    border: 1px solid #cee7d2;
+    box-shadow: 0 0px 0px 1px #cee7d2;
+    outline: 0;
+  }
+  button {
+    border: 0;
+    background-color: #cee7d2;
+    font-size: 16px;
+    padding: 10px 70px;
+    border-radius: 100px;
+    color: #6f8d8d;
+  }
+  .messages {
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  h2 {
+    font-weight: 100;
+    margin: 150px 0 50px;
+  }
+  ol {
+    list-style: none;
+    padding: 0 60px;
+    box-sizing: border-box;
+  }
+  .message-list li {
+    display: inline-block;
+    text-align: center;
+    width: 28%;
+    background-color: #fafafa;
+    margin: 20px;
+  }
+  footer {
+    background-color: #fafafa;
+    padding: 60px;
+    box-sizing: border-box;
+    letter-spacing: 2px;
+  }
+  footer div {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  footer .seat {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background: url(images/seat.svg);
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+
+@media only screen and (max-width: 700px) {
+    h1 {
+        font-size: 24px;
+        margin: 32px 20px 0;
+    }
+    .menu-button {
+        position: relative;
+    }
+    .info {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .info p {
+        margin: 0 0 10px 20px;
+    }
+    .info p span {
+        font-size: 32px;
+    }
+    .info .address {
+        position: relative;
+        bottom: inherit;
+    }
+    .info .location {
+        width: 20px;
+        height: 24px;
+        background: url(images/location.svg) -3px no-repeat;
+        margin-left: 20px;
+    }
+    .main-image {
+        width: 100%;
+        margin-top: 50px;
+        height: 300px;
+    }
+    .meet .image {
+        margin-top: 60px;
+        width: 76%;
+    }
+    .meet .content {
+        margin-left: 20px;
+        font-size: 14px;
+    }
+    .meet {
+        padding-bottom: 76px;
+    }
+    .message {
+        height: auto;
+        background-image: none;
+        background-color: #fafafa;
+        padding-bottom: 16px;
+    }
+    .message .content {
+        width: auto;
+        margin: 50px 20px;
+        font-size: 14px;
+    }
+    .message input, .message .content textarea {
+        width: 90%;
+    }
+    .message .image {
+        display: block;
+        margin: 60px auto;
+    }
+    h2 {
+        margin: 60px 0 10px;
+    }
+    ol {
+        padding: 0 20px;
+    }
+    .message-list li {
+        display: block;
+        width: auto;
+        margin: 20px 0;
+    }
+    footer {
+        padding: 60px 20px;
+    }
+}
+@media only screen and (min-width:701px) and (max-width: 1023px) {
+    .info p span {
+        font-size: 30px;
+    }
+    .info .location {
+        width: 26px;
+        height: 26px;
+        margin-left: 30px;
+    }
+    h1 {
+        font-size: 24px;
+        margin: 110px 0 0 30px;
+    }
+    .info p {
+        margin-left: 30px;
+    }
+    .meet .image {
+        width: 38%;
+    }
+    .message .content {
+        display: block;
+        margin: 30px auto;
+        padding: 30px 0;
+        width: 504px;
+    }
+    .message .image {
+        display: none;
+    }
+    h2 {
+        margin: 100px 0 40px;
+    }
+    ol {
+        padding: 0 30px;
+    }
+    .message-list li {
+        width: 42%;
+    }
+}

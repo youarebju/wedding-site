@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>謝政效 ❤ 王筱雯</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="https://unpkg.com/vue"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+      <button class="menu-button">
+       <span></span>
+      </button>
+      <div class="menu-mask">
+        <ul class="menu">
+          <li v-for="menu in lists">{{ menu.text }}</li>
+        </ul></div>
+      <section class="main">
+        <div class="info">
+          <h1>{{ greeting }}</h1>
+          <p>{{ description }}</p>
+          <p>{{ welcome }}</p>
+          <p><span>{{ date }}</span>{{ time }}</p>
+          <div class="address">
+            <a class="location" :href="locationURL" target="_blank"></a>
+            <address>{{ address }}</address>
+          </div>
+        </div>
+        <div class="main-image"></div>
+      </section>
+      <section class="meet">
+        <div class="image"><img src="images/meet.jpg"/></div>
+        <div v-html="meet" class="content"></div>
+      </section>
+      <section class="message">
+        <div class="content">
+          <p v-html="leaveMessage"></p>
+          <span>{{ who }}</span><input type="text"><br>
+          <span>{{ message }}</span>
+          <textarea rows="4" cols="50"></textarea><br>
+          <button>{{ submit }}</button>
+        </div>
+        <div class="image"><img src="images/message.jpg"/></div>
+      </section>
+      <section class="messages">
+        <h2>0則留言</h2>
+        <ol class="message-list">
+          <li v-for="message in messages" v-html="message.html">
+          </li>
+        </ol>
+      </section>
+      <footer>
+        <div>{{footerTitle}}</div>
+        {{footerDescription}}<a class="seat" :href="seatURL"></a>
+      </footer>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        lists: [
+          {text: 'Wedding info' },
+          {text: 'About us' },
+          {text: 'Leave a message'}
+        ],
+        greeting: 'WE GOT MARRIED',
+        description: 'Vegetarian Wedding',
+        welcome: '歡迎來吃',
+        date: '2018.12.08',
+        time: '12:00PM',
+        address: '10491 台北市中山區新生北路二段 38 號',
+        locationURL: 'https://ppt.cc/fLIAox',
+        meet:'我們 2015/12/30 在 tinder 聊天認識，<br>2016/01/02 見面，<br>然後覺得合適就結婚了。',
+        leaveMessage: '在這個對我們來說非常重要的日子，謝謝您的參與，讓這個充滿意義的日子更為圓滿！<br><br>給一個留言',
+        who: '你是誰：',
+        message: '留個言：',
+        submit: '發　佈',
+        messages: [
+          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
+          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
+          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
+          {html: '<img src=""/><br><span>名字</span><p>留言</p>' },
+        ],
+        footerTitle: 'Vegetarian Wedding',
+        footerDescription: 'Invite you to celebrate our marriage.',
+        seatURL: '',
+        showMenu: false,
+      },
+    })
+  </script>
+  <link rel="stylesheet" href="index.css">
+</body>
+</html>
