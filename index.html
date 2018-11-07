@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <script src="https://unpkg.com/vue"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body>
@@ -44,10 +45,10 @@
         <div class="image"><img src="images/message.jpg"/></div>
       </section>
       <section class="messages">
-        <h2>0則留言</h2>
+        <h2>{{ messages.length }}則留言</h2>
         <ol class="message-list">
           <li v-for="message in messages">
-              <img src=""/><br><span>{{message.name}}</span><p>{{message.text}}</p>
+              <img src=""/><br><span>{{message.Name}}</span><p>{{message.Message}}</p>
           </li>
         </ol>
       </section>
@@ -80,12 +81,7 @@
         guestMessage: '好棒棒',
         message: '留個言：',
         submit: '發　佈',
-        messages: [
-          {img:'seat.svg', name:'a', text:'a'  },
-          {img:'seat.svg', name:'a', text:'a'  },
-          {img:'seat.svg', name:'a', text:'a'  },
-          {img:'seat.svg', name:'a', text:'a'  },
-        ],
+        messages: [],
         footerTitle: 'Vegetarian Wedding',
         footerDescription: 'Invite you to celebrate our marriage.',
         seatURL: '',
@@ -95,20 +91,50 @@
         methods: {
             addMessage: function (event) {
                 // `this` inside methods points to the Vue instance
-                alert(this.guestName + ' 說 ' + this.guestMessage)
-            }
+                alert(this.guestName + ' 說 ' + this.guestMessage);
+                let url = 'https://gentle-harbor-89766.herokuapp.com/messages';
+                let data = {
+                    "name": this.guestName,
+                    "message": this.guestMessage,
+                    "image": "a"
+                };
+                let headers = {
+                    "content-type": "application/x-www-form-urlencoded"
+                };
+                Vue.http.options.emulateJSON = true;
+                this.$http.post(url, data, {"headers": headers})
+                    .then((response) => {
+                        /* 成功拿到資料，然後... */
+                        console.log('success');
+                        this.getMessage();
+                    }) .catch((response) => {
+                        /* 失敗，發生錯誤，然後...*/
+                    })
+                    .finally(() => {
+                        /* 不論成功失敗，都做些事 */
+                    });
+            },
+            getMessage: function (event) {
+
+                this.$http.get('https://gentle-harbor-89766.herokuapp.com/messages')
+                    .then((response) => {
+                        /* 成功拿到資料，然後... */
+                        console.log(response.body);
+                        this.messages = response.body;
+                    }) .catch((response) => {
+                        /* 失敗，發生錯誤，然後...*/
+                    })
+                    .finally(() => {
+                        /* 不論成功失敗，都做些事 */
+                    });
+            },
+
+        },
+        created: function(){
+            console.log('== created ==');
+            this.getMessage();
         }
     })
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://gentle-harbor-89766.herokuapp.com/messages",
-  "method": "GET"
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
 
 
 function addMessage() {
