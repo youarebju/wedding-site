@@ -8,6 +8,9 @@
     font-size: 2.8vw;
     margin: 36vh 0 0 60px;
   }
+  button:focus {
+    outline: 0;
+  }
   .menu-button {
     position: absolute;
     margin: 16px;
@@ -17,6 +20,7 @@
     border: 0;
     padding: 0;
     outline: 0;
+    display: none;
   }
   .menu-button span {
     width: 90%;
@@ -120,7 +124,7 @@
   .meet .image {
     width: 50%;
     margin-left: 30px;
-    box-shadow: 100px 70px #fafafa;
+    box-shadow: 100px 70px #f9f9f9;
   }
   .meet .image img {
     width: 100%;
@@ -131,7 +135,7 @@
     line-height: 2.6;
   }
   .message {
-    background-image: linear-gradient(to right, #fafafa 88%, #fff 4%);
+    background-image: linear-gradient(to right, #f9f9f9 88%, #fff 4%);
     width: 100%;
     height: 520px;
     text-align: right;
@@ -199,14 +203,24 @@
     box-sizing: border-box;
   }
   .message-list li {
+    position: relative;
     display: inline-block;
     text-align: center;
     width: 28%;
-    background-color: #fafafa;
-    margin: 20px;
+    background-color: #f9f9f9;
+    margin: 70px 20px 50px;
+    padding-bottom: 36px;
+  }
+  .message-list li img {
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 20px;
+    background: #fff;
+    border-radius: 100px;
+    border: 2px solid #eee;
   }
   footer {
-    background-color: #fafafa;
+    background-color: #f9f9f9;
     padding: 60px;
     box-sizing: border-box;
     letter-spacing: 2px;
@@ -272,7 +286,7 @@
     .message {
         height: auto;
         background-image: none;
-        background-color: #fafafa;
+        background-color: #f9f9f9;
         padding-bottom: 16px;
     }
     .message .content {

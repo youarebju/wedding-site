@@ -18,13 +18,13 @@
                 </ul></div>
                 <section class="main">
                     <div class="info">
-                        <h1>{{ greeting }}</h1>
-                        <p>{{ description }}</p>
-                        <p>{{ welcome }}</p>
-                        <p><span>{{ date }}</span>{{ time }}</p>
+                        <h1>WE GOT MARRIED</h1>
+                        <p>Vegetarian Wedding</p>
+                        <p>歡迎來吃</p>
+                        <p><span>2018.12.08</span>12:00PM</p>
                         <div class="address">
                             <a class="location" :href="locationURL" target="_blank"></a>
-                            <address>{{ address }}</address>
+                            <address>10491 台北市中山區新生北路二段 38 號</address>
                         </div>
                     </div>
                     <div class="main-image"></div>
@@ -36,9 +36,9 @@
                 <section class="message">
                     <div class="content">
                         <p v-html="leaveMessage"></p>
-                        <span>{{ who }}</span><input type="text" v-model="guestName"><br>
+                        <span>{{ who }}</span><input type="text" v-model="guestName" placeholder="Who R U"><br>
                         <span>{{ message }}</span>
-                        <textarea rows="4" cols="50" v-model="guestMessage"></textarea><br>
+                        <textarea rows="4" cols="50" v-model="guestMessage" placeholder="Leave a message..."></textarea><br>
                         <button  v-on:click="addMessage">{{ submit }}</button>
                     </div>
                     <div class="image"><img src="images/message.jpg"/></div>
@@ -47,7 +47,7 @@
                     <h2>{{ messages.length }}則留言</h2>
                     <ol class="message-list">
                         <li v-for="message in messages">
-                            <img  v-bind:src="'images/' + message.Image + '.png'" height="42" width="42"/><span>{{message.Name}} 說了 </span>{{message.Message}}</p>
+                            <img  v-bind:src="'images/' + message.Image + '.svg'"/><div>{{message.Name}} 說</div><p>{{message.Message}}</p>
                         </li>
                     </ol>
                 </section>
@@ -76,8 +76,8 @@
                     meet:'我們 2015/12/30 在 tinder 聊天認識，<br>2016/01/02 見面，<br>然後覺得合適就結婚了。',
                     leaveMessage: '在這個對我們來說非常重要的日子，謝謝您的參與，讓這個充滿意義的日子更為圓滿！<br><br>給一個留言',
                     who: '你是誰：',
-                    guestName: '你是誰',
-                    guestMessage: '好棒棒',
+                    guestName: '',
+                    guestMessage: '',
                     message: '留個言：',
                     submit: '發　佈',
                     messages: [],
@@ -92,12 +92,12 @@
                         // `this` inside methods points to the Vue instance
                         alert(this.guestName + ' 說 ' + this.guestMessage);
                         let url = 'https://gentle-harbor-89766.herokuapp.com/messages';
-                        let iconNameAry = ["brown", "white"];
+                        let iconNameAry = ["eat", "family", "hat", "love", "nerd", "party"];
                         let randomIndex = Math.floor(Math.random() * iconNameAry.length) ;
                         let data = {
                             "name": this.guestName,
                             "message": this.guestMessage,
-                            "image": iconNameAry[randomIndex] + "-cat"
+                            "image": "cat_" + iconNameAry[randomIndex]
                         };
                         let headers = {
                             "content-type": "application/x-www-form-urlencoded"
